@@ -11,7 +11,7 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
 
 <!-- Navbar ================================================== -->
 <div class="bs-docs-section clearfix">
@@ -809,8 +809,14 @@
 
       <div>
         <blockquote>This is the angular-ui style of alerts</blockquote>
-        <alert type="info">info</alert>
-        <alert type="warning" close="true">warn</alert>
+        <alert type="warning">
+          <h4>Warning!</h4>
+
+          <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent
+            commodo cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
+        </alert>
+        <alert type="info" close="true"><strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not
+          super important.</alert>
       </div>
 
       <div class="bs-component">
@@ -1251,12 +1257,14 @@
 </div>
 
 <div class="row" ng-controller="TestCtrl">
-  <h2>Panel Directive</h2>
-  <ui-panel ng-repeat="x in ['primary', 'success', 'info', 'warning', 'danger']" title="Main Section {{x}}" type="{{x}}">
-    <ui-panel class="col-lg-4" title="SubSection {{y}}" type="{{y}}" ng-repeat="y in ['primary', 'success', 'info', 'warning', 'danger']">
-      This is the innermost content
+  <div class="col-lg-12">
+    <h2>Panel Directive</h2>
+    <ui-panel ng-repeat="x in ['primary', 'success', 'info', 'warning', 'danger']" title="Main Section {{x}}" type="{{x}}">
+      <ui-panel class="col-lg-4" title="SubSection {{y}}" type="{{y}}" ng-repeat="y in ['primary', 'success', 'info', 'warning', 'danger']">
+        This is the innermost content
+      </ui-panel>
     </ui-panel>
-  </ui-panel>
+  </div>
 </div>
 
 <div class="row">
