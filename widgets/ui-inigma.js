@@ -9,8 +9,19 @@ angular.module("ui.inigma.panel", []).directive("uiPanel", [function() {
       title: '@',
       type: '@'
     },
-    template: '<div class="panel panel-{{type || \'primary\'}}"><div class="panel-heading"><h3 class="panel-title">{{title}}</h3></div><div class="panel-body" ng-transclude></div></div>'
+    template: '<div class="panel panel-{{type || \'default\'}}"><div class="panel-heading"><h3 class="panel-title">{{title}}</h3></div><div class="panel-body" ng-transclude></div></div>'
   };
+}]).directive("uiCallout", [function() {
+  return {
+    restrict: 'EA',
+    transclude: true,
+    replace: false,
+    scope: {
+      title: '@',
+      type: '@'
+    },
+    template: '<div class="callout callout-{{type || \'default\'}}"><h4 class="callout-heading">{{title}}</h4><div class="callout-body" ng-transclude></div></div>'
+  }
 }]);
 
 angular.module("ui.inigma.card", ["ui.inigma.panel", "ngAnimate"]).directive("uiCard", [function() {

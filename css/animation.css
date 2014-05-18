@@ -52,3 +52,42 @@
   opacity: 1;
 }
 
+.card-container {
+  perspective: 600;
+  position: relative;
+}
+
+.card {
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 1s ease-in-out;
+  width: 100%;
+}
+
+/*
+.card .side {
+  backface-visibility: hidden;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+}
+*/
+
+.card .front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card .back {
+  transform: rotateY(180deg);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.card .back.active,
+.card-container:hover {
+  transform: rotateY(180deg);
+}
