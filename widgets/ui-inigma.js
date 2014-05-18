@@ -20,7 +20,7 @@ angular.module("ui.inigma.panel", []).directive("uiPanel", [function() {
       header: '@',
       type: '@'
     },
-    template: '<div class="callout callout-{{type || \'default\'}}"><h4 class="callout-heading">{{header}}</h4><div class="callout-body" ng-transclude></div></div>'
+    template: '<div class="callout callout-{{type || \'default\'}}"><h4 class="text-{{type || \'default\'}}">{{header}}</h4><div class="callout-body" ng-transclude></div></div>'
 
   }
 }]);

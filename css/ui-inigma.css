@@ -40,11 +40,6 @@
   background-color: #cfdbe6;
 }
 
-.callout-primary h4,
-.callout-primary a {
-  color: #335d8a;
-}
-
 .callout-primary .table-striped > tbody > tr:nth-child(2n+1) > td,
 .callout-primary .table-striped > tbody > tr:nth-child(2n+1) > th {
   background-color: #99b5cc;
@@ -55,11 +50,6 @@
 .callout-success .table > tbody > tr > td {
   border-color: #468847;
   background-color: #f0fff0;
-}
-
-.callout-success h4,
-.callout-success a {
-  color: #468847;
 }
 
 .callout-success .table-striped > tbody > tr:nth-child(2n+1) > td,
@@ -74,15 +64,6 @@
   background-color: #f4f8fa;
 }
 
-.callout-info h4,
-.callout-info a {
-  color: #3a87ad;
-  /*
-  color: #3a87ad;
-  background-color: #d9edf7;
-  */
-}
-
 .callout-info .table-striped > tbody > tr:nth-child(2n+1) > td,
 .callout-info .table-striped > tbody > tr:nth-child(2n+1) > th {
   background-color: #ddeeff;
@@ -93,16 +74,6 @@
 .callout-warning .table > tbody > tr > td {
   border-color: #c09853;
   background-color: #fcf8e3;
-  /*
-  color: #c09853;
-  background-color: #fcf8e3;
-  border-color: #fbeed5;
-  */
-}
-
-.callout-warning h4,
-.callout-warning a {
-  color: #c09853;
 }
 
 .callout-warning .table-striped > tbody > tr:nth-child(2n+1) > td,
@@ -117,13 +88,7 @@
   background-color: #fff0f0;
 }
 
-.callout-danger h4,
-.callout-danger a {
-  color: #b94a48;
-}
-
 .callout-danger .table-striped > tbody > tr:nth-child(2n+1) > td,
 .callout-danger .table-striped > tbody > tr:nth-child(2n+1) > th {
-  background-color: #fdf7f7;
   background-color: #f2dede;
 }
