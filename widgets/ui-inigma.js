@@ -1,4 +1,4 @@
-angular.module("ui.inigma", ["ui.inigma.panel", "ui.inigma.card", "ui.inigma.picker", "ui.inigma.tags"]);
+angular.module("ui.inigma", ["ui.inigma.card", "ui.inigma.flip", "ui.inigma.panel", "ui.inigma.picker", "ui.inigma.tags"]);
 
 angular.module("ui.inigma.panel", []).directive("uiPanel", [function() {
   return {
@@ -6,10 +6,10 @@ angular.module("ui.inigma.panel", []).directive("uiPanel", [function() {
     transclude: true,
     replace: false,
     scope: {
-      title: '@',
+      header: '@',
       type: '@'
     },
-    template: '<div class="panel panel-{{type || \'default\'}}"><div class="panel-heading"><h3 class="panel-title">{{title}}</h3></div><div class="panel-body" ng-transclude></div></div>'
+    template: '<div class="panel panel-{{type || \'default\'}}"><div class="panel-heading"><h3 class="panel-title">{{header}}</h3></div><div class="panel-body" ng-transclude></div></div>'
   };
 }]).directive("uiCallout", [function() {
   return {
@@ -17,14 +17,31 @@ angular.module("ui.inigma.panel", []).directive("uiPanel", [function() {
     transclude: true,
     replace: false,
     scope: {
-      title: '@',
+      header: '@',
       type: '@'
     },
-    template: '<div class="callout callout-{{type || \'default\'}}"><h4 class="callout-heading">{{title}}</h4><div class="callout-body" ng-transclude></div></div>'
+    template: '<div class="callout callout-{{type || \'default\'}}"><h4 class="callout-heading">{{header}}</h4><div class="callout-body" ng-transclude></div></div>'
+
+  }
+}]);
+
+angular.module("ui.inigma.flip", []).directive("flippable", [function() {
+  return {
+    restrict: 'A',
+    transclude: true,
+    replace: false,
+    template: '<div class="flippable"><div class="flipper" ng-class="{active: active}" ng-click="flip()"><div ng-transclude></div><div class="clearfix">&nbsp;</div></div></div>',
+    controller: function($scope) {
+      $scope.flip = function() {
+        $scope.active = !$scope.active;
+      }
+    }
   }
 }]);
 
 angular.module("ui.inigma.card", ["ui.inigma.panel", "ngAnimate"]).directive("uiCard", [function() {
+
+}]).directive("uiCardTest", [function() {
   function CardConfigurationCtrl($scope) {
   }
 
@@ -33,12 +50,12 @@ angular.module("ui.inigma.card", ["ui.inigma.panel", "ngAnimate"]).directive("ui
     transclude: true,
     replace: false,
     scope: {
-      title: '@',
+      header: '@',
       type: '@',
       buttons: '='
     },
     controller: CardConfigurationCtrl,
-    template: '<div class="panel panel-{{type || \'primary\'}}"><div class="panel-heading"><h3 class="panel-title">{{title}}<i class="fa fa-bars pull-right" ng-show="buttons" ng-click="showConfigs = !showConfigs"></i></h3></div><div class="panel-body animatein" ng-transclude ng-hide="showConfigs"></div><div class="panel-body animatein" ng-show="showConfigs"><div class="pull-left hpadding" ng-repeat="button in buttons"><i class="fa fa-{{button.icon}} fa-5x" tooltip-html-unsafe="{{button.tooltip}}" ng-click="button.click()"></i></div></div></div>'
+    template: '<div class="panel panel-{{type || \'primary\'}}"><div class="panel-heading"><h3 class="panel-title">{{header}}<i class="fa fa-bars pull-right" ng-show="buttons" ng-click="showConfigs = !showConfigs"></i></h3></div><div class="panel-body animatein" ng-transclude ng-hide="showConfigs"></div><div class="panel-body animatein" ng-show="showConfigs"><div class="pull-left hpadding" ng-repeat="button in buttons"><i class="fa fa-{{button.icon}} fa-5x" tooltip-html-unsafe="{{button.tooltip}}" ng-click="button.click()"></i></div></div></div>'
   }
 }]);
 
