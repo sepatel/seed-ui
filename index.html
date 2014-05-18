@@ -8,6 +8,8 @@
   <link href="css/bootstrap-spacelab.css" rel="stylesheet">
   <!-- <link href="css/bootstrap-3.1.1.css" rel="stylesheet"> -->
   <link href="css/font-awesome-4.0.3.css" rel="stylesheet">
+  <link href="css/ui-inigma.css" rel="stylesheet">
+  <link href="css/animation.css" rel="stylesheet">
 </head>
 <body>
 
@@ -815,8 +817,10 @@
           <p>Best check yo self, you're not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent
             commodo cursus magna, <a href="#" class="alert-link">vel scelerisque nisl consectetur et</a>.</p>
         </alert>
-        <alert type="info" close="true"><strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your attention</a>, but it's not
-          super important.</alert>
+        <alert type="info" close="true"><strong>Heads up!</strong> This <a href="#" class="alert-link">alert needs your
+          attention</a>, but it's not
+          super important.
+        </alert>
       </div>
 
       <div class="bs-component">
@@ -1265,23 +1269,28 @@
       </ui-panel>
     </ui-panel>
   </div>
-</div>
-
-<div class="row">
   <div class="col-lg-12">
-    <div class="page-header">
-      <h1>Other Stuff</h1>
-    </div>
+    <h2>DatePicker Directive</h2>
+    <ui-date-picker model="formInfo.date" placeholder="My placeholder"></ui-date-picker>
+    <div>Current Date is {{formInfo.date}}</div>
+    <hr/>
   </div>
-  <div class="col-lg-6" ng-controller="DatePickerCtrl">
-    <h2>Date Picker</h2>
-    <input type="date" show-weeks="false" datepicker-popup="yyyy-MM-dd" ng-model="dt" is-open="opened" ng-click="open($event)" placeholder="Click me to choose a date" />
+  <div class="col-lg-12" ng-controller="CardCtrl">
+    <h2>Card Directive</h2>
+    <ui-card class="col-lg-4" title="Sample Card no configs" type="primary">
+      This is the content of the card
+    </ui-card>
+    <ui-card class="col-lg-4" title="Sample Card w/configs" type="primary" buttons="configButtons">
+      This is the content of the card
+    </ui-card>
   </div>
 </div>
 
 </div>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="js/angular-1.2.16.min.js"></script>
+<script src="js/angular-animate-1.2.16.min.js"></script>
 <!-- <script src="js/angular-route-1.2.16.min.js"></script> -->
 <script src="js/ui-bootstrap-tpls-0.11.0.js"></script>
 <script src="widgets/ui-inigma.js"></script>
