@@ -1,4 +1,35 @@
-angular.module("ui.inigma", ["ui.inigma.card", "ui.inigma.flip", "ui.inigma.panel", "ui.inigma.picker", "ui.inigma.tags"]);
+angular.module("ui.inigma", ["ui.inigma.card", "ui.inigma.flip", "ui.inigma.form", "ui.inigma.panel", "ui.inigma.picker",
+  "ui.inigma.tags"]);
+
+angular.module("ui.inigma.form", []).directive("uiFormInput", [function() {
+  var internalId = 1;
+  return {
+    restrict: 'EA',
+    transclude: true,
+    replace: false,
+    scope: {
+      label: '@',
+      span: '@',
+      type: '@',
+      model: '='
+    },
+    controller: function($scope) {
+      console.info("Scope is ", $scope);
+      $scope.internalFormId = internalId++;
+      $scope.labelSpan = $scope.span || 2;
+      $scope.inputSpan = 12 - $scope.labelSpan;
+    },
+    /*
+    link: function(scope, elem, attr) {
+      scope.internalFormId = internalId++;
+      console.info("Linking with form id of ", internalId, scope.internalFormId);
+      scope.label = attr.label;
+      scope.labelSpan = attr.span || 2;
+      scope.inputSpan = 12 - scope.labelSpan;
+    }, */
+    template: '<div class="form-group"><label for="internalForm{{internalFormId}}" class="col-lg-{{labelSpan}} control-label">{{label}}</label><div class="col-lg-{{inputSpan}}"><input type="{{type}}" class="form-control" id="internalForm{{internalFormId}}" placeholder="{{label}}" ng-model="model"></div></div>'
+  }
+}]);
 
 angular.module("ui.inigma.panel", []).directive("uiPanel", [function() {
   return {
@@ -7,9 +38,10 @@ angular.module("ui.inigma.panel", []).directive("uiPanel", [function() {
     replace: false,
     scope: {
       header: '@',
+      footer: '@',
       type: '@'
     },
-    template: '<div class="panel panel-{{type || \'default\'}}"><div class="panel-heading"><h3 class="panel-title">{{header}}</h3></div><div class="panel-body" ng-transclude></div></div>'
+    template: '<div class="panel panel-{{type || \'default\'}}"><div class="panel-heading" ng-show="header"><h3 class="panel-title">{{header}}</h3></div><div class="panel-body" ng-transclude></div><div class="panel-footer" ng-show="footer">{{footer}}</div></div>'
   };
 }]).directive("uiCallout", [function() {
   return {

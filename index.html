@@ -392,7 +392,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="page-header">
-        <h1 id="tables">Tables</h1>
+        <h1>Tables</h1>
       </div>
 
       <div class="bs-component">
@@ -1050,88 +1050,6 @@
 
   <div class="row">
     <div class="col-lg-12">
-      <h2>Panels</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-4">
-      <div class="bs-component">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Basic panel
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-heading">Panel heading</div>
-          <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-
-        <div class="panel panel-default">
-          <div class="panel-body">
-            Panel content
-          </div>
-          <div class="panel-footer">Panel footer</div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="bs-component">
-        <div class="panel panel-primary">
-          <div class="panel-heading">
-            <h3 class="panel-title">Panel primary</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-
-        <div class="panel panel-success">
-          <div class="panel-heading">
-            <h3 class="panel-title">Panel success</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-
-        <div class="panel panel-warning">
-          <div class="panel-heading">
-            <h3 class="panel-title">Panel warning</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-4">
-      <div class="bs-component">
-        <div class="panel panel-danger">
-          <div class="panel-heading">
-            <h3 class="panel-title">Panel danger</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-
-        <div class="panel panel-info">
-          <div class="panel-heading">
-            <h3 class="panel-title">Panel info</h3>
-          </div>
-          <div class="panel-body">
-            Panel content
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
       <h2>Wells</h2>
     </div>
   </div>
@@ -1167,7 +1085,7 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="page-header">
-        <h1 id="tables">Dialogs</h1>
+        <h1>Dialogs</h1>
       </div>
     </div>
   </div>
@@ -1263,7 +1181,7 @@
 <div class="row" ng-controller="TestCtrl">
   <div class="col-lg-12">
     <h2>Panel Directive</h2>
-    <ui-panel ng-repeat="x in ['default', 'primary', 'success', 'info', 'warning', 'danger']" header="Main Section {{x}}" type="{{x}}">
+    <ui-panel ng-repeat="x in ['default', 'primary', 'success', 'info', 'warning', 'danger']" header="Main Section {{x}}" footer="This is the footer area" type="{{x}}">
       <ui-panel class="col-lg-4" header="SubSection {{y}}" type="{{y}}" ng-repeat="y in ['default', 'primary', 'success', 'info', 'warning', 'danger']">
         This is the innermost content
       </ui-panel>
