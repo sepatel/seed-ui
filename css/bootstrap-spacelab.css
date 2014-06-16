@@ -4949,12 +4949,12 @@ a.list-group-item-danger.active:focus {
   border-bottom: 1px solid #dddddd;
 }
 .panel-default {
-  border: 1px solid #2E2F2F;
+  border-color: #dddddd;
 }
 .panel-default > .panel-heading {
   color: #ffffff;
   background-color: #f5f5f5;
-  border-color: #dddddd;
+  border-color: #2e2f2f;
   background-image: linear-gradient(#6D7070, #474949 50%, #3D3F3F);
   background-repeat: no-repeat;
   filter: none;
@@ -5793,13 +5793,21 @@ button.close {
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 .navbar-inverse {
+  /*
   background-image: -webkit-linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
   background-image: linear-gradient(#6d94bf, #446e9b 50%, #3e648d);
   background-repeat: no-repeat;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff6d94bf', endColorstr='#ff3e648d', GradientType=0);
   filter: none;
+  */
   border: 1px solid #345578;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+  background-color: #f5f5f5;
+  border-color: #dddddd;
+  background-image: -webkit-linear-gradient(#6D7070, #474949 50%, #3D3F3F);
+  background-image: linear-gradient(#6D7070, #474949 50%, #3D3F3F);
+  background-repeat: no-repeat;
+  filter: none;
 }
 .navbar-inverse .badge {
   background-color: #fff;
