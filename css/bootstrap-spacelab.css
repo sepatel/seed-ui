@@ -4972,6 +4972,8 @@ a.list-group-item-danger.active:focus {
   color: #ffffff;
   background-color: #446e9b;
   border-color: #446e9b;
+  background-image: linear-gradient(#345e8b, #547eab 50%, #547eab);
+  background-repeat: no-repeat;
 }
 .panel-primary > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #446e9b;
@@ -4986,6 +4988,8 @@ a.list-group-item-danger.active:focus {
   color: #468847;
   background-color: #dff0d8;
   border-color: #d6e9c6;
+  background-image: linear-gradient(#c6d9b6, #e6f9d6);
+  background-repeat: no-repeat;
 }
 .panel-success > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #d6e9c6;
@@ -5000,6 +5004,8 @@ a.list-group-item-danger.active:focus {
   color: #3a87ad;
   background-color: #d9edf7;
   border-color: #bce8f1;
+  background-image: linear-gradient(#acd8e1, #ccf8ff);
+  background-repeat: no-repeat;
 }
 .panel-info > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #bce8f1;
@@ -5014,6 +5020,8 @@ a.list-group-item-danger.active:focus {
   color: #c09853;
   background-color: #fcf8e3;
   border-color: #fbeed5;
+  background-image: linear-gradient(#fbeed5, #fcf8e3);
+  background-repeat: no-repeat;
 }
 .panel-warning > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #fbeed5;
@@ -5028,6 +5036,8 @@ a.list-group-item-danger.active:focus {
   color: #b94a48;
   background-color: #f2dede;
   border-color: #eed3d7;
+  background-image: linear-gradient(#f2dede, #eed3d7);
+  background-repeat: no-repeat;
 }
 .panel-danger > .panel-heading + .panel-collapse .panel-body {
   border-top-color: #eed3d7;
