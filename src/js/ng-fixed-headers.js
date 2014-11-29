@@ -7,18 +7,20 @@
         rows: '=watch'
       },
       transclude: true,
-      template: '<div style="width: 100%;"><div class="fixedHeader" style="white-space: nowrap; z-index: 1; overflow: hidden; position: absolute;"></div><div ng-transclude></div></div>',
+      template: '<div><div class="fixedHeaderContainer"><div class="fixedHeader" style="white-space: nowrap; z-index: 1; overflow: hidden; position: absolute;"></div></div> <div ng-transclude></div></div>',
       link: function(scope, elem, attr, ctrl) {
+        // TODO: Left and Top should be dynamic. top is whatever the top of the thead is. left is depending on the scroll amount?
         var table = elem.find("table").one();
         var thead = table.find("thead").one();
         var tr = thead.find("tr").one();
 
         var headerDiv = elem.find("div.fixedHeader").one();
+        var positionOffset = null;
 
-        elem.parent().on('scroll', function(a, b, c, d) {
-          console.info("Did I scroll?", headerDiv.scrollLeft(), $(this).scrollLeft(), a);
-          headerDiv.scrollLeft($(this).scrollLeft());
-          table.css('margin-top', -1 * $(this).scrollTop + "px");
+        elem.parent().on('scroll', function() {
+          headerDiv.css('left', -1 * $(this).scrollLeft() + positionOffset.left);
+          headerDiv.css('top', positionOffset.top);
+          //table.css('margin-top', -1 * $(this).scrollTop() + "px" + thead.position().top);
         });
 
         function initialize() {
@@ -29,8 +31,15 @@
             //headerDiv.width(thead.innerWidth());
             headerDiv.height(thead.innerHeight());
             headerDiv.css('background-color', tr.css('background-color'));
-            headerDiv.css('top', table.offsetParent().position().top);
-            table.css('margin-top', -1 * headerDiv.height() + "px");
+            if (positionOffset == null) {
+              positionOffset = thead.position();
+              headerDiv.css('left', -1 * $(this).scrollLeft() + positionOffset.left);
+              headerDiv.css('top', positionOffset.top);
+              //table.css('margin-top', -1 * headerDiv.height() + "px");
+              //thead.css('margin-bottom', headerDiv.height() + "px");
+            }
+            console.info("What is the top?", headerDiv.scrollTop(), thead.position().top, thead.position());
+            //console.info("What is the top?", headerDiv.scrollTop(), $(this).scrollTop(), $(this).position().top, $(this).offsetParent().position().top);
 
             // wrap the the contents of th for ease of use
             tr.find("th").filter(":not(span.fixedHeaderWrapping)").each(function(index, th) {
