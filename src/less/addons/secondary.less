@@ -1,0 +1,57 @@
+@brand-secondary: #92c6d1;
+
+@btn-secondary-color: #fff;
+@btn-secondary-bg: @brand-secondary;
+@btn-secondary-border: darken(@btn-secondary-bg, 5%);
+
+@state-secondary-text: darken(@brand-secondary, 10%);
+@state-secondary-bg: lighten(@brand-secondary, 30%);
+@state-secondary-border: darken(spin(@state-secondary-bg, -10), 5%);
+
+@label-secondary-bg: @brand-secondary;
+
+@alert-secondary-bg: @state-secondary-bg;
+@alert-secondary-text: @state-secondary-text;
+@alert-secondary-border: @state-secondary-border;
+
+@progress-bar-secondary-bg: @brand-secondary;
+
+@panel-secondary-text: #ffffff;
+@panel-secondary-border: @state-secondary-border;
+@panel-secondary-heading-bg: @brand-secondary;
+
+.alert-secondary {
+  .alert-variant(@alert-secondary-bg; @alert-secondary-border; @alert-secondary-text);
+}
+
+.btn-secondary {
+  .button-variant(@btn-secondary-color; @btn-secondary-bg; @btn-secondary-border);
+}
+
+.has-secondary {
+  .form-control-validation(@state-secondary-text; @state-secondary-text; @state-secondary-bg);
+}
+
+.label-secondary {
+  .label-variant(@label-secondary-bg);
+}
+
+.list-group-item-variant(secondary; @state-secondary-bg; @state-secondary-text);
+
+.panel-secondary {
+  .panel-variant(@panel-secondary-border; @panel-secondary-text; @panel-secondary-heading-bg; @panel-secondary-border);
+}
+
+.progress-bar-secondary {
+  .progress-bar-variant(@progress-bar-secondary-bg);
+}
+
+.table-row-variant(secondary; @state-secondary-bg);
+
+.text-secondary {
+  .text-emphasis-variant(@state-secondary-text);
+}
+
+.bg-secondary {
+  .bg-variant(@state-secondary-bg);
+}

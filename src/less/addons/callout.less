@@ -1,0 +1,76 @@
+.callout {
+  &:extend(.panel all);
+  margin: @line-height-computed 0px;
+  padding: @panel-body-padding;
+  border: 0px solid transparent;
+  border-left: 3px solid transparent;
+}
+
+.callout h4 {
+  margin-top: 0px;
+  margin-bottom: (@padding-base-vertical / 2);
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout .table > thead:first-child > tr:first-child > th {
+  border-bottom: 0px none;
+}
+
+.callout-default {
+  .panel-variant(@panel-default-border; @panel-default-text; @panel-primary-heading-bg; @panel-primary-border);
+  background-color: @gray-lighter;
+  .callout-title {
+    color: @panel-default-text;
+  }
+}
+
+.callout-primary {
+  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
+  background-color: lighten(@panel-primary-heading-bg, 50%);
+  .callout-title {
+    color: @panel-primary-text;
+  }
+}
+
+.callout-secondary {
+  .panel-variant(@state-secondary-text; @panel-secondary-text; @panel-secondary-heading-bg; @panel-secondary-border);
+  background-color: lighten(@state-secondary-text, 50%);
+  .callout-title {
+    color: @state-secondary-text;
+  }
+}
+
+.callout-success {
+  .panel-variant(@state-success-text; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
+  background-color: lighten(@state-success-text, 60%);
+  .callout-title {
+    color: @state-success-text;
+  }
+}
+
+.callout-info {
+  .panel-variant(@state-info-text; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
+  background-color: lighten(@state-info-text, 70%);
+  .callout-title {
+    color: @state-info-text;
+  }
+}
+
+.callout-warning {
+  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
+  background-color: @state-warning-bg;
+  .callout-title {
+    color: @state-warning-text;
+  }
+}
+
+.callout-danger {
+  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
+  background-color: @state-danger-bg;
+  .callout-title {
+    color: @state-danger-text;
+  }
+}

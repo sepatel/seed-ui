@@ -1,5 +1,63 @@
-angular.module("ui.inigma", ["ui.inigma.card", "ui.inigma.flip", "ui.inigma.form", "ui.inigma.panel", "ui.inigma.picker",
-  "ui.inigma.tags"]);
+angular.module("ui.inigma", ["ui.inigma.card", "ui.inigma.flip", "ui.inigma.form", "ui.inigma.panel",
+  "ui.inigma.picker", "ui.inigma.tags"]);
+
+/*
+angular.module("ui.table", []).directive("fixedHeaders", ['$timeout', '$window', function($timeout, $window) {
+  return {
+    restrict: 'EA',
+    replace: false,
+    scope: {
+      rows: '=watch'
+    },
+    transclude: true,
+    template: '<div><div class="fixedHeader" style="white-space: nowrap; position: absolute;"></div><div ng-transclude></div></div>',
+    link: function(scope, elem, attr, ctrl) {
+      function initialize() {
+        $timeout(function() {
+          var table = elem.find("table").one();
+          var thead = table.find("thead").one();
+          var tr = thead.find("tr").one();
+
+          thead.height(thead.outerHeight());
+
+          var headerDiv = elem.find("div.fixedHeader").one();
+          headerDiv.empty();
+          console.info("headerDiv is ", headerDiv);
+          headerDiv.width(thead.innerWidth());
+          headerDiv.height(thead.innerHeight());
+          headerDiv.css('background-color', tr.css('background-color'));
+
+          // wrap the the contents of th
+          tr.find("th").filter(":not(span.fixedHeaderWrapping)").each(function(index, th) {
+            th = angular.element(th);
+            if (th.find("span.fixedHeaderWrapping").length == 0) {
+              console.info("I feel a need to wrap", th);
+              th.wrapInner('<span class="fixedHeaderWrapping">');
+            }
+          });
+
+          tr.find("th").each(function(index, th) {
+            th = angular.element(th);
+            var wrapping = th.find("span.fixedHeaderWrapping").one();
+            var span = wrapping.clone(true);
+            span.width(th.outerWidth()).height(th.outerHeight()).css('display', 'inline-block').css('white-space', th.css('white-space'));
+            angular.forEach(['top', 'bottom', 'left', 'right'], function(direction) {
+              span.css('padding-' + direction, th.css('padding-' + direction));
+              span.css('margin-' + direction, th.css('margin-' + direction));
+              span.css('border-' + direction, th.css('border-' + direction));
+            });
+            headerDiv.append(span);
+          });
+        });
+      }
+
+      angular.element($window).bind('resize', initialize);
+
+      scope.$watch('rows', initialize, true);
+    }
+  }
+}]);
+*/
 
 angular.module("ui.inigma.form", []).directive("uiFormInput", [function() {
   var internalId = 1;
@@ -20,13 +78,13 @@ angular.module("ui.inigma.form", []).directive("uiFormInput", [function() {
       $scope.inputSpan = 12 - $scope.labelSpan;
     },
     /*
-    link: function(scope, elem, attr) {
-      scope.internalFormId = internalId++;
-      console.info("Linking with form id of ", internalId, scope.internalFormId);
-      scope.label = attr.label;
-      scope.labelSpan = attr.span || 2;
-      scope.inputSpan = 12 - scope.labelSpan;
-    }, */
+     link: function(scope, elem, attr) {
+     scope.internalFormId = internalId++;
+     console.info("Linking with form id of ", internalId, scope.internalFormId);
+     scope.label = attr.label;
+     scope.labelSpan = attr.span || 2;
+     scope.inputSpan = 12 - scope.labelSpan;
+     }, */
     template: '<div class="form-group"><label for="internalForm{{internalFormId}}" class="col-lg-{{labelSpan}} control-label">{{label}}</label><div class="col-lg-{{inputSpan}}"><input type="{{type}}" class="form-control" id="internalForm{{internalFormId}}" placeholder="{{label}}" ng-model="model"></div></div>'
   }
 }]);
@@ -91,7 +149,7 @@ angular.module("ui.inigma.card", ["ui.inigma.panel", "ngAnimate"]).directive("ui
   }
 }]);
 
-angular.module("ui.inigma.picker", []).directive("uiDatePicker", [function() {
+angular.module("ui.inigma.picker", ["ui.bootstrap"]).directive("uiDatePicker", [function() {
   return {
     restrict: 'EA',
     replace: false,
@@ -99,7 +157,7 @@ angular.module("ui.inigma.picker", []).directive("uiDatePicker", [function() {
       model: '=',
       placeholder: '@'
     },
-    template: '<input type="date" x-ng-model="model" x-datepicker-popup x-datepicker-options="dateOptions" x-is-open="open" x-ng-click="popup($event)" placeholder="{{placeholder}}" x-show-button-bar="false">',
+    template: '<input type="text" x-ng-model="model" x-datepicker-popup x-datepicker-options="dateOptions" x-is-open="open" x-ng-click="popup($event)" placeholder="{{placeholder}}" x-show-button-bar="false">',
     controller: function($scope) {
       $scope.open = false;
       $scope.dateOptions = {
