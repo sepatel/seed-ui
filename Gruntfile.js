@@ -20,35 +20,9 @@ module.exports = function(grunt) {
       dist: 'dist',
       docs: 'docs/dist'
     },
-    jshint: {
-      options: {
-        jshintrc: 'src/js/.jshintrc'
-      },
-      grunt: {
-        options: {
-          jshintrc: 'grunt/.jshintrc'
-        },
-        src: ['Gruntfile.js', 'grunt/*.js']
-      },
-      core: {
-        src: 'src/js/**/*.js'
-      }
-    },
-
-    jscs: {
-      options: {
-        config: 'js/.jscsrc'
-      },
-      grunt: {
-        src: '<%= jshint.grunt.src %>'
-      },
-      core: {
-        src: '<%= jshint.core.src %>'
-      }
-    },
 
     concat: {
-      bootstrap: {
+      inigma: {
         src: [ 'src/js/**/*.js' ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
@@ -59,7 +33,7 @@ module.exports = function(grunt) {
         preserveComments: 'some'
       },
       core: {
-        src: '<%= concat.bootstrap.dest %>',
+        src: '<%= concat.inigma.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       }
     },
@@ -89,19 +63,7 @@ module.exports = function(grunt) {
       options: {
         csslintrc: 'src/less/.csslintrc'
       },
-      dist: [
-        'dist/css/bootstrap.css', 'dist/css/bootstrap-theme.css'
-      ],
-      examples: [
-        'docs/examples/**/*.css'
-      ],
-      docs: {
-        options: {
-          ids: false,
-          'overqualified-elements': false
-        },
-        src: 'docs/assets/css/src/docs.css'
-      }
+      dist: 'dist/css/<%= pkg.name %>.css'
     },
 
     cssmin: {
@@ -113,10 +75,6 @@ module.exports = function(grunt) {
       minifyCore: {
         src: 'dist/css/<%= pkg.name %>.css',
         dest: 'dist/css/<%= pkg.name %>.min.css'
-      },
-      minifyTheme: {
-        src: 'dist/css/<%= pkg.name %>-theme.css',
-        dest: 'dist/css/<%= pkg.name %>-theme.min.css'
       }
     },
 
@@ -140,8 +98,8 @@ module.exports = function(grunt) {
     },
     watch: {
       src: {
-        files: '<%= jshint.core.src %>',
-        tasks: ['jshint:src', 'concat']
+        files: 'src/js/**/*.js',
+        tasks: ['concat']
       },
       less: {
         files: 'src/less/**/*.less',
@@ -174,8 +132,7 @@ module.exports = function(grunt) {
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore']);
-  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'csscomb:dist',
-    'cssmin:minifyCore', 'cssmin:minifyTheme']);
+  grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'csscomb:dist', 'cssmin:minifyCore']);
 
   // Full distribution task.
   grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);

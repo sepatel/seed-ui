@@ -13,33 +13,31 @@
         var table = elem.find("table").one();
         var thead = table.find("thead").one();
         var tr = thead.find("tr").one();
+        var fixedContainer = elem.find(".fixedHeaderContainer");
 
         var headerDiv = elem.find("div.fixedHeader").one();
         var positionOffset = null;
 
         elem.parent().on('scroll', function() {
-          headerDiv.css('left', -1 * $(this).scrollLeft() + positionOffset.left);
-          headerDiv.css('top', positionOffset.top);
-          //table.css('margin-top', -1 * $(this).scrollTop() + "px" + thead.position().top);
+          headerDiv.scrollLeft($(this).scrollLeft());
+          //headerDiv.css('top', positionOffset.top);
         });
 
-        function initialize() {
+        function initialize(oldValue, newValue, scope) {
           $timeout(function() {
             thead.height(thead.outerHeight());
 
             headerDiv.empty();
-            //headerDiv.width(thead.innerWidth());
             headerDiv.height(thead.innerHeight());
+            headerDiv.width(fixedContainer.width());
             headerDiv.css('background-color', tr.css('background-color'));
+
             if (positionOffset == null) {
               positionOffset = thead.position();
-              headerDiv.css('left', -1 * $(this).scrollLeft() + positionOffset.left);
+              console.info("Reset the top to ", positionOffset);
+              headerDiv.scrollLeft($(this).scrollLeft());
               headerDiv.css('top', positionOffset.top);
-              //table.css('margin-top', -1 * headerDiv.height() + "px");
-              //thead.css('margin-bottom', headerDiv.height() + "px");
             }
-            console.info("What is the top?", headerDiv.scrollTop(), thead.position().top, thead.position());
-            //console.info("What is the top?", headerDiv.scrollTop(), $(this).scrollTop(), $(this).position().top, $(this).offsetParent().position().top);
 
             // wrap the the contents of th for ease of use
             tr.find("th").filter(":not(span.fixedHeaderWrapping)").each(function(index, th) {
