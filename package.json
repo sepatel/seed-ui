@@ -1,18 +1,18 @@
 {
   "name": "sliqsolv-seed",
-  "description": "Enhancements to core angularjs and bootstrap framework.",
+  "description": "Seed for rich UI using angularjs and bootstrap framework.",
   "version": "0.0.1",
   "keywords": [
-    "css", "less", "mobile-first", "responsive", "front-end", "framework", "web", "ui", "inigma"
+    "css", "less", "mobile-first", "responsive", "front-end", "framework", "web", "ui", "sliqsolv"
   ],
   "homepage": "http:github.com/sepatel/seed-ui",
   "author": "Sejal Patel",
-  "style": "dist/css/ui-theme.css",
+  "style": "dist/css/sliqsolv-seed.css",
   "less": "less/bootstrap.less",
-  "main": "./dist/js/ui-theme.js",
+  "main": "./dist/js/sliqsolve-seed.js",
   "repository": {
     "type": "git",
-    "url": "https:github.com/sepatel/ui-theme.git"
+    "url": "https:github.com/sepatel/seed-ui.git"
   },
   "devDependencies": {
     "btoa": "~1.1.2",
