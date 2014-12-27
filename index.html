@@ -141,6 +141,15 @@
   </div>
 </div>
 
+
+<label>Animation</label>
+<div ng-init="items=['apple','banana','carrot','donut','elbow','xray']">
+  <input placeholder="filter" ng-model="f" />
+  <div ng-repeat="item in items | filter:f" class="animate">
+    {{item}}
+  </div>
+</div>
+
 <!-- Buttons
 ================================================== -->
 <div class="">
@@ -1246,7 +1255,7 @@
 <script src="js/ui-bootstrap-tpls-0.12.0.js"></script>
 <script src="dist/js/sliqsolv-seed.js"></script>
 <script type="text/javascript">
-  var app = angular.module('my-app', ['sliqsolv', 'ui.bootstrap', 'ui.bootstrap.collapse']);
+  var app = angular.module('my-app', ['ngAnimate', 'sliqsolv', 'ui.bootstrap', 'ui.bootstrap.collapse']);
 </script>
 </body>
 </html>
