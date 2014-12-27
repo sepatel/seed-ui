@@ -1,76 +1,110 @@
 .callout {
   &:extend(.panel all);
   margin: @line-height-computed 0px;
-  padding: @panel-body-padding;
+  // margin: 0px;
+  padding: (@panel-body-padding / 2) @panel-body-padding;
   border: 0px solid transparent;
   border-left: 3px solid transparent;
-}
 
-.callout h4 {
-  margin-top: 0px;
-  margin-bottom: (@padding-base-vertical / 2);
-}
+  &.callout-right {
+    border-left: 0px;
+    border-right: 3px solid transparent;
+  }
 
-.callout p:last-child {
-  margin-bottom: 0;
-}
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0px;
+    margin-bottom: (@padding-base-vertical / 2);
+  }
 
-.callout .table > thead:first-child > tr:first-child > th {
-  border-bottom: 0px none;
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .table > thead:first-child > tr:first-child > th {
+    border-bottom: 0px none;
+  }
 }
 
 .callout-default {
-  .panel-variant(@panel-default-border; @panel-default-text; @panel-primary-heading-bg; @panel-primary-border);
-  background-color: @gray-lighter;
+  border-color: @gray-light;
+
+  &.callout-right {
+    border-color: @gray-light;
+  }
+
   .callout-title {
-    color: @panel-default-text;
+    color: @gray;
   }
 }
 
 .callout-primary {
-  .panel-variant(@panel-primary-border; @panel-primary-text; @panel-primary-heading-bg; @panel-primary-border);
-  background-color: lighten(@panel-primary-heading-bg, 50%);
+  border-color: @brand-primary;
+
+  &.callout-right {
+    border-color: @brand-primary;
+  }
+
   .callout-title {
-    color: @panel-primary-text;
+    color: @brand-primary;
   }
 }
 
 .callout-secondary {
-  .panel-variant(@state-secondary-text; @panel-secondary-text; @panel-secondary-heading-bg; @panel-secondary-border);
-  background-color: lighten(@state-secondary-text, 50%);
+  border-color: @brand-secondary;
+
+  &.callout-right {
+    border-color: @brand-secondary;
+  }
+
   .callout-title {
-    color: @state-secondary-text;
+    color: @brand-secondary;
   }
 }
 
 .callout-success {
-  .panel-variant(@state-success-text; @panel-success-text; @panel-success-heading-bg; @panel-success-border);
-  background-color: lighten(@state-success-text, 60%);
+  border-color: @brand-success;
+
+  &.callout-right {
+    border-color: @brand-success;
+  }
+
   .callout-title {
-    color: @state-success-text;
+    color: @brand-success;
   }
 }
 
 .callout-info {
-  .panel-variant(@state-info-text; @panel-info-text; @panel-info-heading-bg; @panel-info-border);
-  background-color: lighten(@state-info-text, 70%);
+  border-color: @brand-info;
+
+  &.callout-right {
+    border-color: @brand-info;
+  }
+
   .callout-title {
-    color: @state-info-text;
+    color: @brand-info;
   }
 }
 
 .callout-warning {
-  .panel-variant(@panel-warning-border; @panel-warning-text; @panel-warning-heading-bg; @panel-warning-border);
-  background-color: @state-warning-bg;
+  border-color: @brand-warning;
+
+  &.callout-right {
+    border-color: @brand-warning;
+  }
+
   .callout-title {
-    color: @state-warning-text;
+    color: @brand-warning;
   }
 }
 
 .callout-danger {
-  .panel-variant(@panel-danger-border; @panel-danger-text; @panel-danger-heading-bg; @panel-danger-border);
-  background-color: @state-danger-bg;
+  border-color: @brand-danger;
+
+  &.callout-right {
+    border-color: @brand-danger;
+  }
+
   .callout-title {
-    color: @state-danger-text;
+    color: @brand-danger;
   }
 }

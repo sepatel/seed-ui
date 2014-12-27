@@ -1,11 +1,11 @@
 {
-  "name": "ui-inigma",
+  "name": "sliqsolv-seed",
   "description": "Enhancements to core angularjs and bootstrap framework.",
   "version": "0.0.1",
   "keywords": [
     "css", "less", "mobile-first", "responsive", "front-end", "framework", "web", "ui", "inigma"
   ],
-  "homepage": "http:github.com/sepatel/ui-theme",
+  "homepage": "http:github.com/sepatel/seed-ui",
   "author": "Sejal Patel",
   "style": "dist/css/ui-theme.css",
   "less": "less/bootstrap.less",
@@ -46,7 +46,6 @@
   "jspm": {
     "main": "js/bootstrap",
     "directories": {
-      "example": "examples",
       "lib": "dist"
     },
     "shim": {

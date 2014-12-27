@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     },
 
     concat: {
-      inigma: {
+      sliqsolv: {
         src: [ 'src/js/**/*.js' ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         preserveComments: 'some'
       },
       core: {
-        src: '<%= concat.inigma.dest %>',
+        src: '<%= concat.sliqsolv.dest %>',
         dest: 'dist/js/<%= pkg.name %>.min.js'
       }
     },
@@ -46,7 +46,7 @@ module.exports = function(grunt) {
           sourceMapURL: '<%= pkg.name %>.css.map',
           sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
         },
-        src: ['src/less/bootstrap.less', 'src/less/addons/inigma.less'],
+        src: ['src/less/bootstrap.less', 'src/less/addons/sliqsolv.less'],
         dest: 'dist/css/<%= pkg.name %>.css'
       }
     },

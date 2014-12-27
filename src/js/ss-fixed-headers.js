@@ -1,5 +1,5 @@
 (function(angular) {
-  angular.module("ngFixedHeaders", []).directive("fixedHeaders", ['$timeout', '$window', function($timeout, $window) {
+  angular.module("ssFixedHeaders", []).directive("fixedHeaders", ['$timeout', '$window', function($timeout, $window) {
     return {
       restrict: 'EA',
       replace: false,
@@ -72,10 +72,3 @@
   }]);
 }(angular));
 
-
-(function(angular) {
-  var ngNotification = angular.module("ngNotify", []);
-
-  ngNotification.service("NotifyService", ['$timeout', '$window', function($timeout, $window) {
-  }]);
-}(angular));
