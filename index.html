@@ -7,7 +7,6 @@
   <title>HTML Widget Themes</title>
   <link href="dist/css/sliqsolv-seed.css" rel="stylesheet">
   <link href="css/font-awesome-4.2.0.css" rel="stylesheet">
-  <link href="dist/css/sliqsolv-seed-animation.css" rel="stylesheet">
 </head>
 
 <body>
@@ -121,7 +120,9 @@
 
 <div class="container-fluid" style="margin-top: 52px;">
 
-<div class="pull-right" style="border-radius: 8px; border: 1px solid black; background-color: wheat; width: 400px; height: 120px; z-index: 2000; position: fixed; right: 10px; margin-top: 10px;">
+<button class="btn btn-primary pull-right" style="margin-right: 400px; margin-top: 10px;"
+    ng-click="notification = !notification" ng-init="notification = true">Toggle Notification</button>
+<div class="pull-right animate" ng-show="notification" style="border-radius: 8px; border: 1px solid black; background-color: wheat; width: 400px; height: 120px; z-index: 2000; position: fixed; right: 10px; margin-top: 10px;">
   <div class="pull-left" style="height: 100%; background-color: dodgerblue; width: 40px; border-radius: 8px 0px 0px 8px; padding: 8px;">
     <div class="pull-left" style="width: 40px; height: 50px;"><i class="fa fa-info-circle fa-2x"></i></div>
     <div class="pull-left" style="width: 40px; height: 50px;">
@@ -146,7 +147,7 @@
   <div class="page-header">
     <div class="row">
       <div class="col-lg-12">
-        <h1 id="buttons">Buttons</h1>
+        <h2>Some Buttons <i class="fa fa-spin fa-spinner"></i> </h2>
       </div>
     </div>
   </div>
@@ -1203,16 +1204,17 @@
   <div class="col-lg-12" ng-init="flipState = {}">
     <h2>Flippable Cards</h2>
 
-    <div flippable="" class="card card-h1 card-w1" ng-init="flipState[y] = false"
-        flipped="flipState[y]"
+    <div flippable="" class="card card-h1 card-w1" ng-init="flipState[y] = false; hidden[y] = false"
+        flipped="flipState[y]" ng-hide="hidden[y]"
         ng-repeat="y in ['default', 'primary', 'secondary', 'success', 'info', 'warning', 'danger']">
       <div flippable-front="">
         <div class="panel panel-{{y}}">
           <div class="panel-heading">
             <div class="btn-group btn-group-xs pull-right">
-              <button class="btn btn-default" ng-click="flipState[y] = !flipState[y]"><i class="fa fa-refresh"></i></button>
+              <button class="btn btn-default" ng-click="flipState[y] = !flipState[y]"><i class="fa fa-refresh fa-spin"></i>
+              </button>
               <button class="btn btn-default"><i class="fa fa-medkit"></i></button>
-              <button class="btn btn-default"><i class="fa fa-times"></i></button>
+              <button class="btn btn-default" ng-click="hidden[y] = true"><i class="fa fa-times"></i></button>
             </div>
             <h2 class="panel-title">Card {{y}} Title</h2>
           </div>
@@ -1223,7 +1225,8 @@
         <div class="panel panel-default">
           <div class="panel-heading">
             <div class="btn-group btn-group-xs pull-right">
-              <button class="btn btn-default" ng-click="flipState[y] = !flipState[y]"><i class="fa fa-refresh"></i></button>
+              <button class="btn btn-default" ng-click="flipState[y] = !flipState[y]"><i class="fa fa-refresh"></i>
+              </button>
             </div>
             <h2 class="panel-title">Back Card Title</h2>
           </div>
@@ -1238,8 +1241,8 @@
 </div>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.27/angular-animate.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-animate.min.js"></script>
 <script src="js/ui-bootstrap-tpls-0.12.0.js"></script>
 <script src="dist/js/sliqsolv-seed.js"></script>
 <script type="text/javascript">
