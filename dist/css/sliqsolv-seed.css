@@ -6375,8 +6375,11 @@ button.close {
   opacity: 1;
 }
 .animate.ng-hide {
-  display: block !important;
   opacity: 0;
+}
+.animate.ng-hide-add,
+.animate.ng-hide-remove {
+  display: block !important;
 }
 .animate.ng-enter,
 .animate.ng-leave {
