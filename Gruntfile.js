@@ -91,10 +91,8 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      fonts: {
-        src: 'fonts/*',
-        dest: 'dist/'
-      }
+      html: { src: ['src/**/*.html', 'css/*', 'js/*'], dest: 'dist/' },
+      fonts: { /* src: 'fonts/*', dest: 'dist/' */ }
     },
     watch: {
       src: {
@@ -135,7 +133,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'csscomb:dist', 'cssmin:minifyCore']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'copy:html', 'dist-css', 'copy:fonts', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'dist']);
