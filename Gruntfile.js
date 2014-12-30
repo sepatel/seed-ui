@@ -91,7 +91,9 @@ module.exports = function(grunt) {
     },
 
     copy: {
-      html: { src: ['src/**/*.html', 'css/*', 'js/*'], dest: 'dist/' },
+      css: { src: 'css/*', dest: 'dist/' },
+      js: { src: 'js/*', dest: 'dist/' },
+      html: { src: 'src/**/*.html', dest: 'dist/' },
       fonts: { /* src: 'fonts/*', dest: 'dist/' */ }
     },
     watch: {
@@ -99,6 +101,7 @@ module.exports = function(grunt) {
         files: 'src/js/**/*.js',
         tasks: ['concat']
       },
+      html: { files: 'src/**/*.html', tasks: 'copy:html' },
       less: {
         files: 'src/less/**/*.less',
         tasks: 'less'
@@ -133,7 +136,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'csscomb:dist', 'cssmin:minifyCore']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'copy:html', 'dist-css', 'copy:fonts', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'copy', 'dist-css', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'dist']);
