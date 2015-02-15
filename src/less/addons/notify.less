@@ -1,34 +1,51 @@
 .notify {
   position: fixed;
-  width: 400px;
-  height: 120px;
+  width: 300px;
+  height: 100px;
   border-radius: @border-radius-large;
   border: 1px solid black;
   z-index: @zindex-popover;
+  margin: @padding-large-vertical @padding-large-horizontal;
 
   &.info {
-    background-color: @alert-info-bg;
+    background-color: fade(@alert-info-bg, 70%);
+    border-color: @alert-info-border;
+    &:hover {
+      background-color: fade(@alert-info-bg, 90%);
+    }
     .notify-bar {
       background-color: @brand-info;
       color: @btn-info-color;
     }
   }
   &.success {
-    background-color: @alert-success-bg;
+    background-color: fade(@alert-success-bg, 70%);
+    border-color: @alert-success-border;
+    &:hover {
+      background-color: fade(@alert-success-bg, 90%);
+    }
     .notify-bar {
       background-color: @brand-success;
       color: @btn-success-color;
     }
   }
   &.warning {
-    background-color: @alert-warning-bg;
+    background-color: fade(@alert-warning-bg, 70%);
+    border-color: @alert-warning-border;
+    &:hover {
+      background-color: fade(@alert-warning-bg, 90%);
+    }
     .notify-bar {
       background-color: @brand-warning;
       color: @btn-warning-color;
     }
   }
   &.danger {
-    background-color: @alert-danger-bg;
+    background-color: fade(@alert-danger-bg, 70%);
+    border-color: @alert-danger-border;
+    &:hover {
+      background-color: fade(@alert-danger-bg, 90%);
+    }
     .notify-bar {
       background-color: @brand-danger;
       color: @btn-danger-color;
@@ -85,7 +102,7 @@
 
   .notify-body {
     height: 100%;
-    padding: @padding-large-vertical 45px @padding-large-vertical @padding-base-horizontal;
+    padding: @padding-large-vertical 0px @padding-large-vertical @padding-base-horizontal;
 
     .title {
       font-weight: bold;
@@ -93,7 +110,8 @@
 
     .content {
       overflow: auto;
-      height: 80px;
+      height: 69px;
+      padding-right: 45px;
     }
   }
 }
