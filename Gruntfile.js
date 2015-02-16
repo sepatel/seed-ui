@@ -23,7 +23,7 @@ module.exports = function(grunt) {
 
     concat: {
       sliqsolv: {
-        src: [ 'src/js/**/*.js' ],
+        src: [ 'client/js/**/*.js' ],
         dest: 'dist/js/<%= pkg.name %>.js'
       }
     },
@@ -32,21 +32,21 @@ module.exports = function(grunt) {
       options: {
         preserveComments: 'some'
       },
-      core: {
-        src: '<%= concat.sliqsolv.dest %>',
-        dest: 'dist/js/<%= pkg.name %>.min.js'
+      vendor: {
+        src: [
+          'bower_components/jquery/dist/jquery.js', 'bower_components/angular/angular.js',
+          'bower_components/angular-animate/angular-animate.js', 'bower_components/angular-route/angular-route.js',
+          'bower_components/ui-utils/ui-utils.js', 'js/ui-bootstrap-tpls-0.12.0.js'
+        ],
+        dest: 'dist/js/vendor.min.js'
       }
     },
     less: {
       compileCore: {
         options: {
-          strictMath: true,
-          sourceMap: false,
-          outputSourceFiles: true,
-          sourceMapURL: '<%= pkg.name %>.css.map',
-          sourceMapFilename: 'dist/css/<%= pkg.name %>.css.map'
+          strictMath: true
         },
-        src: ['src/less/bootstrap.less', 'src/less/addons/sliqsolv.less'],
+        src: ['client/less/bootstrap.less', 'client/less/addons/sliqsolv.less'],
         dest: 'dist/css/<%= pkg.name %>.css'
       }
     },
@@ -59,9 +59,10 @@ module.exports = function(grunt) {
         src: 'dist/css/<%= pkg.name %>.css'
       }
     },
+
     csslint: {
       options: {
-        csslintrc: 'src/less/.csslintrc'
+        csslintrc: 'client/less/.csslintrc'
       },
       dist: 'dist/css/<%= pkg.name %>.css'
     },
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
 
     csscomb: {
       options: {
-        config: 'src/less/.csscomb.json'
+        config: 'client/less/.csscomb.json'
       },
       dist: {
         expand: true,
@@ -92,21 +93,23 @@ module.exports = function(grunt) {
 
     copy: {
       css: { src: 'css/*', dest: 'dist/' },
-      js: { src: 'js/*', dest: 'dist/' },
-      html: { src: 'src/**/*.html', dest: 'dist/' },
+      js: { /* src: 'js/*', dest: 'dist/' */ },
+      html: { expand: true, cwd: 'client/', src: '**/*.html', dest: 'dist/' },
       fonts: { /* src: 'fonts/*', dest: 'dist/' */ }
     },
+
     watch: {
       src: {
-        files: 'src/js/**/*.js',
+        files: 'client/js/**/*.js',
         tasks: ['concat']
       },
-      html: { files: 'src/**/*.html', tasks: 'copy:html' },
+      html: { files: 'client/**/*.html', tasks: 'copy:html' },
       less: {
-        files: 'src/less/**/*.less',
+        files: 'client/less/**/*.less',
         tasks: 'less'
       }
     },
+
     sed: {
       versionNumber: {
         pattern: (function() {
@@ -125,11 +128,11 @@ module.exports = function(grunt) {
   });
 
   // These plugins provide necessary tasks.
-  require('load-grunt-tasks')(grunt, { scope: 'devDependencies' });
+  require('load-grunt-tasks')(grunt);
   require('time-grunt')(grunt);
 
   // JS distribution task.
-  grunt.registerTask('dist-js', ['concat', 'uglify:core']);
+  grunt.registerTask('dist-js', ['concat', 'uglify']);
 
   // CSS distribution task.
   grunt.registerTask('less-compile', ['less:compileCore']);
