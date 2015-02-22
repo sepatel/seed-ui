@@ -17,14 +17,13 @@ module.exports = function(grunt) {
 
     // Task configuration.
     clean: {
-      dist: 'dist',
-      docs: 'docs/dist'
+      dist: ['client/css', 'client/js']
     },
 
     concat: {
       sliqsolv: {
-        src: [ 'client/js/**/*.js' ],
-        dest: 'dist/js/<%= pkg.name %>.js'
+        src: [ 'js/**/*.js' ],
+        dest: 'client/js/<%= pkg.name %>.js'
       }
     },
 
@@ -36,9 +35,9 @@ module.exports = function(grunt) {
         src: [
           'bower_components/jquery/dist/jquery.js', 'bower_components/angular/angular.js',
           'bower_components/angular-animate/angular-animate.js', 'bower_components/angular-route/angular-route.js',
-          'bower_components/ui-utils/ui-utils.js', 'js/ui-bootstrap-tpls-0.12.0.js'
+          'bower_components/ui-utils/ui-utils.js', 'vendor/ui-bootstrap-tpls-0.12.0.js'
         ],
-        dest: 'dist/js/vendor.min.js'
+        dest: 'client/js/vendor.min.js'
       }
     },
     less: {
@@ -46,8 +45,8 @@ module.exports = function(grunt) {
         options: {
           strictMath: true
         },
-        src: ['client/less/bootstrap.less', 'client/less/addons/sliqsolv.less'],
-        dest: 'dist/css/<%= pkg.name %>.css'
+        src: ['less/bootstrap.less', 'less/addons/sliqsolv.less'],
+        dest: 'client/css/<%= pkg.name %>.css'
       }
     },
 
@@ -56,15 +55,15 @@ module.exports = function(grunt) {
         options: {
           map: false
         },
-        src: 'dist/css/<%= pkg.name %>.css'
+        src: 'client/css/<%= pkg.name %>.css'
       }
     },
 
     csslint: {
       options: {
-        csslintrc: 'client/less/.csslintrc'
+        csslintrc: 'less/.csslintrc'
       },
-      dist: 'dist/css/<%= pkg.name %>.css'
+      dist: 'client/css/<%= pkg.name %>.css'
     },
 
     cssmin: {
@@ -74,38 +73,38 @@ module.exports = function(grunt) {
         noAdvanced: true
       },
       minifyCore: {
-        src: 'dist/css/<%= pkg.name %>.css',
-        dest: 'dist/css/<%= pkg.name %>.min.css'
+        src: 'client/css/<%= pkg.name %>.css',
+        dest: 'client/css/<%= pkg.name %>.min.css'
       }
     },
 
     csscomb: {
       options: {
-        config: 'client/less/.csscomb.json'
+        config: 'less/.csscomb.json'
       },
       dist: {
         expand: true,
-        cwd: 'dist/css/',
+        cwd: 'client/css/',
         src: ['*.css', '!*.min.css'],
-        dest: 'dist/css/'
+        dest: 'client/css/'
       }
     },
 
     copy: {
-      css: { src: 'css/*', dest: 'dist/' },
+      css: { /* src: 'css/*', dest: 'dist/' */ },
       js: { /* src: 'js/*', dest: 'dist/' */ },
-      html: { expand: true, cwd: 'client/', src: '**/*.html', dest: 'dist/' },
+      html: { /* expand: true, cwd: 'client/', src: '** /*.html', dest: 'dist/' */ },
       fonts: { /* src: 'fonts/*', dest: 'dist/' */ }
     },
 
     watch: {
       src: {
-        files: 'client/js/**/*.js',
+        files: 'js/**/*.js',
         tasks: ['concat']
       },
-      html: { files: 'client/**/*.html', tasks: 'copy:html' },
+      /* html: { files: 'client/** /*.html', tasks: 'copy:html' }, */
       less: {
-        files: 'client/less/**/*.less',
+        files: 'less/**/*.less',
         tasks: 'less'
       }
     },
@@ -139,7 +138,7 @@ module.exports = function(grunt) {
   grunt.registerTask('dist-css', ['less-compile', 'autoprefixer:core', 'csscomb:dist', 'cssmin:minifyCore']);
 
   // Full distribution task.
-  grunt.registerTask('dist', ['clean:dist', 'copy', 'dist-css', 'dist-js']);
+  grunt.registerTask('dist', ['clean:dist', 'dist-css', 'dist-js']);
 
   // Default task.
   grunt.registerTask('default', ['clean:dist', 'dist']);
