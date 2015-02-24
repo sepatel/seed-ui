@@ -36,8 +36,8 @@
             Storage.remove(key);
           });
 
-          Storage.save('version', version);
-          Storage.save('_upgraded', true);
+          Storage.set('version', version);
+          Storage.set('_upgraded', true);
 
           $window.location.reload();
         }

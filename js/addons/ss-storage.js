@@ -30,6 +30,8 @@
         }
         return removedItem;
       }
-    }
+    };
+
+    return storage;
   }]);
 }(angular));
